@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "../ft_printf/includes/ft_printf.h"
+# include "../ft_queue/includes/ft_queue.h"
 # define MIN_INT -2147483648
 # define MAX_INT 2147483647
 # define BUFF_SIZE 32
