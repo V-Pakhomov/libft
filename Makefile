@@ -6,7 +6,7 @@
 #    By: rciera <rciera@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 20:27:55 by rciera            #+#    #+#              #
-#    Updated: 2020/08/31 09:06:12 by rciera           ###   ########.fr        #
+#    Updated: 2020/09/02 15:02:51 by rciera           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,14 +109,18 @@ OBJ_LIST = $(subst .c,.o,$(SRC_LIST))
 
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_LIST))
 
-FLAGS = -Wall -Wextra -Werror -c
+FLAGS = -Wall -Wextra -Werror -c -MMD
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJ)
+$(NAME): $(OBJ_DIR) $(OBJ) $(FT_PRINTF) $(FT_QUEUE)
 	ar rc $(NAME) $(OBJ)	
 	ranlib $(NAME)
+
+$(FT_PRINTF):
 	make -C $(FT_PRINTF)
+
+$(FT_QUEUE):
 	make -C $(FT_QUEUE)
 
 $(OBJ_DIR):
